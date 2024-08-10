@@ -1,9 +1,11 @@
 import { Field, Form, Formik } from "formik";
 import css from "./ContactForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
-import { addContact, selectContacts } from "../../redux/contactsSlice";
+// import { nanoid } from "@reduxjs/toolkit";
+// import { selectContacts } from "../../redux/contactsSlice";
 import { Notify } from "notiflix";
+import { addContact } from "../../redux/contactsOps";
+import { selectContacts } from "../../redux/contactsSlice";
 
 const ContactForm = () => {
   const contacts = useSelector(selectContacts);
@@ -18,7 +20,6 @@ const ContactForm = () => {
     const newContact = {
       name: values.name,
       number: values.number,
-      id: nanoid(),
     };
 
     const nameIsAdded = contacts.some(
