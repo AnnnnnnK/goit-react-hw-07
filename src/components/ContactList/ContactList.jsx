@@ -11,12 +11,10 @@ import {
 } from "../../redux/contactsSlice";
 
 const ContactList = () => {
-  const filter = useSelector(selectNameFilter);
   const filteredContacts = useSelector(selectFilteredContacts);
   const contacts = useSelector(selectContacts);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
-  const contactsToShow = filter ? filteredContacts : contacts;
 
   return (
     <>
@@ -24,7 +22,7 @@ const ContactList = () => {
       {loading && <Loader />}
       {contacts.length > 0 && <h2 className={css.title}>Contacts</h2>}
       <ul>
-        {contactsToShow.map((contact) => (
+        {filteredContacts.map((contact) => (
           <li key={contact.id}>
             <Contact contact={contact} />
           </li>

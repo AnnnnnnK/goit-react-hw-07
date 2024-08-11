@@ -12,7 +12,6 @@ const slice = createSlice({
   reducers: {
     changeFilter: (state, action) => {
       state.filters.name = action.payload;
-      console.log(state.filters);
     },
   },
 });
